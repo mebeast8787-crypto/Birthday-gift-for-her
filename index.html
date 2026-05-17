@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Uroosa ❤️</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      height:100vh;
+      overflow:hidden;
+      background: linear-gradient(135deg, #ff4e8a, #ff85a2, #ffc2d1);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+    }
+
+    .hearts{
+      position:absolute;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-50px;
+      color:rgba(255,255,255,0.7);
+      animation: float 8s linear infinite;
+      font-size:20px;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0) scale(1);
+        opacity:0;
+      }
+      30%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+      }
+    }
+
+    .container{
+      position:relative;
+      z-index:2;
+      width:90%;
+      max-width:420px;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.3);
+      border-radius:25px;
+      padding:35px 25px;
+      text-align:center;
+      color:white;
+      box-shadow:0 10px 35px rgba(0,0,0,0.25);
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn{
+      from{
+        transform:translateY(30px);
+        opacity:0;
+      }
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    h1{
+      font-size:2.8rem;
+      font-family:'Dancing Script', cursive;
+      margin-bottom:10px;
+      text-shadow:2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .name{
+      color:#fff0f5;
+      font-size:3.2rem;
+      margin-bottom:15px;
+    }
+
+    .message{
+      font-size:1rem;
+      line-height:1.8;
+      margin-top:15px;
+      color:#fff;
+    }
+
+    .love{
+      margin-top:25px;
+      font-size:1.1rem;
+      font-weight:600;
+      color:#fff5f7;
+    }
+
+    .btn{
+      margin-top:30px;
+      padding:14px 28px;
+      border:none;
+      border-radius:50px;
+      background:white;
+      color:#ff4e8a;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s ease;
+      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+      background:#ffe3ec;
+    }
+
+    @media(max-width:480px){
+      h1{
+        font-size:2.2rem;
+      }
+
+      .name{
+        font-size:2.6rem;
+      }
+
+      .message{
+        font-size:0.95rem;
+      }
+
+      .container{
+        padding:30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Hearts -->
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Main Card -->
+  <div class="container">
+    <h1>Happy Birthday</h1>
+    <div class="name">Uroosa ❤️</div>
+
+    <p class="message">
+      Today is all about the most beautiful soul in my life.  
+      Your smile lights up my world, your voice brings peace to my heart,  
+      and every moment with you feels magical. ✨
+      <br><br>
+      May your birthday be filled with endless happiness, love, laughter,
+      and dreams coming true. You deserve every beautiful thing in this world.
+    </p>
+
+    <div class="love">
+      Forever yours 💖
+    </div>
+
+    <button class="btn" onclick="startConfetti()">
+      Click for Love 🎉
+    </button>
+  </div>
+
+  <script>
+    // Confetti Animation
+    function startConfetti() {
+      confetti({
+        particleCount: 180,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+
+      setTimeout(() => {
+        confetti({
+          particleCount: 120,
+          angle: 60,
+          spread: 80,
+          origin: { x: 0 }
+        });
+
+        confetti({
+          particleCount: 120,
+          angle: 120,
+          spread: 80,
+          origin: { x: 1 }
+        });
+      }, 300);
+    }
+
+    // Auto Confetti on Load
+    window.onload = () => {
+      startConfetti();
+    };
+
+    // Floating Hearts
+    const heartsContainer = document.getElementById("hearts");
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
